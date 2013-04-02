@@ -1,0 +1,26 @@
+Name: pacifica-test-data
+Version: @VERSION@
+Release: 1
+Summary: Pacifica Test Data
+Group: System Environment/Base
+License: LGPL
+Source: %{name}-%{version}.tar.gz
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildArch: noarch
+
+%description
+Pacifica Test Data
+
+%prep
+%setup -q -n %{name}-%{version}
+
+%build
+
+%install
+dir=$RPM_BUILD_ROOT/%{_datadir}/pacifica/testdata/
+mkdir -p $dir
+cp -a data $dir/
+
+%files
+%defattr(0644,root,root)
+%{_datadir}/pacifica/testdata
